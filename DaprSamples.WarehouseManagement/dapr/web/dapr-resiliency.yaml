@@ -1,0 +1,26 @@
+apiVersion: dapr.io/v1alpha1
+kind: Resiliency
+metadata:
+  name: webResiliency
+# scopes:
+#   - warehousemanagement-ui
+
+spec:
+  policies:
+    retries:
+      sampleRetry:
+        policy: constant
+        maxInterval: 5s
+        maxRetries: -1 
+
+    circuitBreakers:
+      sampleCircuitBreaker:
+        maxRequests: 1
+        timeout: 5s 
+        trip: consecutiveFailures >= 5
+
+  targets:
+    apps:
+      warehousemanagement-orders:
+        retry: sampleRetry
+        circuitBreaker: sampleCircuitBreaker

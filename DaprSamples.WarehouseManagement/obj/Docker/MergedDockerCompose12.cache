@@ -1,0 +1,162 @@
+name: dockercompose13744472210713241816
+services:
+  rabbitmq:
+    container_name: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_PASS: guest
+      RABBITMQ_DEFAULT_USER: guest
+    image: rabbitmq:management
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 15672
+      published: "15672"
+      protocol: tcp
+    - mode: ingress
+      target: 5672
+      published: "5672"
+      protocol: tcp
+    restart: always
+  redis:
+    hostname: redisstate
+    image: redis:alpine
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 6379
+      published: "6379"
+      protocol: tcp
+  seq:
+    deploy:
+      resources:
+        limits:
+          memory: "15032385536"
+        reservations:
+          memory: "15032385536"
+    environment:
+      ACCEPT_EULA: "Y"
+    image: datalust/seq:latest
+    labels:
+      traefik.backend: seq
+      traefik.docker.network: web
+      traefik.port: "80"
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      published: "54001"
+      protocol: tcp
+  warehousemanagement-customers:
+    build:
+      context: C:\Prajeesh\Projects\DaprSamples.WarehouseManagement
+      dockerfile: WarehouseManagement.Customers/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: warehousemanagementcustomers
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      published: "5001"
+      protocol: tcp
+  warehousemanagement-customers-sidecar:
+    command:
+    - ./daprd
+    - -app-id
+    - warehousemanagement-customers
+    - -app-port
+    - "80"
+    - -components-path
+    - /components
+    - -log-level
+    - debug
+    depends_on:
+      warehousemanagement-customers:
+        condition: service_started
+    image: daprio/daprd:latest
+    network_mode: service:warehousemanagement-customers
+    volumes:
+    - type: bind
+      source: C:\Prajeesh\Projects\DaprSamples.WarehouseManagement\dapr\customer
+      target: /components
+      bind:
+        create_host_path: true
+  warehousemanagement-inventory:
+    build:
+      context: C:\Prajeesh\Projects\DaprSamples.WarehouseManagement
+      dockerfile: WarehouseManagement.Inventory/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: warehousemanagementinventory
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      published: "5002"
+      protocol: tcp
+  warehousemanagement-inventory-sidecar:
+    command:
+    - ./daprd
+    - -app-id
+    - warehousemanagement-inventory
+    - -app-port
+    - "80"
+    - -components-path
+    - /components
+    - -log-level
+    - debug
+    depends_on:
+      warehousemanagement-inventory:
+        condition: service_started
+    image: daprio/daprd:latest
+    network_mode: service:warehousemanagement-inventory
+    volumes:
+    - type: bind
+      source: C:\Prajeesh\Projects\DaprSamples.WarehouseManagement\dapr\inventory
+      target: /components
+      bind:
+        create_host_path: true
+  warehousemanagement-orders:
+    build:
+      context: C:\Prajeesh\Projects\DaprSamples.WarehouseManagement
+      dockerfile: WarehouseManagement.Orders/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: warehousemanagementorders
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      published: "5003"
+      protocol: tcp
+  warehousemanagement-orders-sidecar:
+    command:
+    - ./daprd
+    - -app-id
+    - warehousemanagement-orders
+    - -app-port
+    - "80"
+    - -components-path
+    - /components
+    - -log-level
+    - debug
+    depends_on:
+      warehousemanagement-orders:
+        condition: service_started
+    image: daprio/daprd:latest
+    network_mode: service:warehousemanagement-orders
+    volumes:
+    - type: bind
+      source: C:\Prajeesh\Projects\DaprSamples.WarehouseManagement\dapr\order
+      target: /components
+      bind:
+        create_host_path: true
+networks:
+  default:
+    name: dockercompose13744472210713241816_default

@@ -1,0 +1,464 @@
+{
+	"info": {
+		"_postman_id": "ea3d8dcc-6928-4765-97ad-2d5f9cfb4aa3",
+		"name": "Warehouse management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Customers",
+			"item": [
+				{
+					"name": "Sheri Oberbrunner",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set (\"randomZipCode\", _.random (15289,99999));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerId\": \"cbab67f4-5077-4883-972e-137761788809\",\r\n    \"customerName\": \"Sheri Oberbrunner\",\r\n    \"address\": {\r\n        \"streetName\": \"9th Yanvarya Square\",\r\n        \"houseNumber\": 442,\r\n        \"extension\": \"w\",\r\n        \"zipCode\": \"61285\",\r\n        \"state\": \"Odessa\",\r\n        \"country\": \"Ukraine\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/Customer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"Customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Noah Carter",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set (\"randomZipCode\", _.random (15289,99999));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerId\": \"f0dcc070-9125-4f83-99d8-c73f35d36882\",\r\n    \"customerName\": \"Noah Carter\",\r\n    \"address\": {\r\n        \"streetName\": \"4786 Chardonnay Drive\",\r\n        \"houseNumber\": 532,\r\n        \"extension\": \"0\",\r\n        \"zipCode\": \" 34471\",\r\n        \"state\": \"Florida\",\r\n        \"country\": \"United States\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/Customer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"Customer"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Computer",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set (\"randomZipCode\", _.random (15289,99999));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\": \"926e2df8-95f4-4f46-9b79-4f7e300cb6a1\",\r\n    \"productName\": \"Computer\",\r\n    \"unitPrice\": 1599.50,\r\n    \"quantity\": 20\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5002/Inventory",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"Inventory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mouse",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set (\"randomZipCode\", _.random (15289,99999));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\": \"d1463d45-21af-40ad-9c2b-f678a1d72ca5\",\r\n    \"productName\": \"Mouse\",\r\n    \"unitPrice\": 30,\r\n    \"quantity\": 679\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5002/Inventory",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"Inventory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Shoes",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set (\"randomZipCode\", _.random (15289,99999));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\": \"dd31dc7b-8b85-4145-9217-30a069f1fb1d\",\r\n    \"productName\": \"Shoes\",\r\n    \"unitPrice\": 150.99,\r\n    \"quantity\": 193\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5002/Inventory",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"Inventory"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Computer-NoCustomer",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set (\"randomZipCode\", _.random (15289,99999));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"orderId\": \"{{$guid}}\",\r\n  \"productId\": \"926e2df8-95f4-4f46-9b79-4f7e300cb6a1\",\r\n  \"customerId\": \"4d5eee71-f022-44a8-bbd3-fe3f3d3b8e23\",\r\n  \"quantity\": 10,\r\n  \"state\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5003/Orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5003",
+							"path": [
+								"Orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Computer-InsufficientInventory",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set (\"randomZipCode\", _.random (15289,99999));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"orderId\": \"{{$guid}}\",\r\n  \"productId\": \"926e2df8-95f4-4f46-9b79-4f7e300cb6a1\",\r\n  \"customerId\": \"cbab67f4-5077-4883-972e-137761788809\",\r\n  \"quantity\": 1000,\r\n  \"state\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5003/Orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5003",
+							"path": [
+								"Orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Computer",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set (\"randomZipCode\", _.random (15289,99999));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"orderId\": \"{{$guid}}\",\r\n  \"productId\": \"926e2df8-95f4-4f46-9b79-4f7e300cb6a1\",\r\n  \"customerId\": \"cbab67f4-5077-4883-972e-137761788809\",\r\n  \"quantity\": 10,\r\n  \"state\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5003/Orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5003",
+							"path": [
+								"Orders"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Random",
+			"item": [
+				{
+					"name": "New Order",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set (\"randomZipCode\", _.random (15289,99999));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"orderId\": \"{{$guid}}\",\r\n  \"productId\": \"c089d542-a555-43d2-bd67-2d56b9c63612\",\r\n  \"customerId\": \"7f27eb3f-a774-4072-a5e6-089186400c75\",\r\n  \"quantity\": 100,\r\n  \"state\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5003/Orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5003",
+							"path": [
+								"Orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Customer",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set (\"randomZipCode\", _.random (15289,99999));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"customerId\": \"{{$guid}}\",\r\n  \"customerName\": \"{{$randomFullName}}\",\r\n  \"address\": {\r\n    \"streetName\": \"{{$randomStreetName}}\",\r\n    \"houseNumber\": {{$randomInt}},\r\n    \"extension\": \"{{$randomAlphaNumeric}}\",\r\n    \"zipCode\":\"{{randomZipCode}}\",\r\n    \"state\": \"{{$randomCity}}\",\r\n    \"country\": \"{{$randomCountry}}\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/Customer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"Customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Inventory",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set (\"randomZipCode\", _.random (15289,99999));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"productId\": \"{{$guid}}\",\r\n  \"productName\": \"{{$randomProduct}}\",\r\n  \"unitPrice\": {{$randomPrice}},\r\n  \"quantity\": {{$randomInt}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5002/Inventory",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"Inventory"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "randomZipCode",
+			"value": ""
+		}
+	]
+}

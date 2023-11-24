@@ -1,0 +1,28 @@
+# apiVersion: dapr.io/v1alpha1
+# kind: Component
+# metadata:
+#   name: datastore
+# spec:
+#   type: state.mongodb
+#   version: v1
+#   metadata:
+#   # - name: server
+#   #   value: mongo
+#   - name: host
+#     value: mongo:27017
+#   - name: username
+#     value: root
+#   - name: password
+#     value: mongorootpwd
+#   - name: databaseName
+#     value: admin
+#   - name: collectionName
+#     value: orderCollection
+#   # - name: writeConcern
+#   #   value: <REPLACE-WITH-WRITE-CONCERN> # Optional.
+#   # - name: readConcern
+#   #   value: <REPLACE-WITH-READ-CONCERN> # Optional.
+#   # - name: operationTimeout
+#   #   value: <REPLACE-WITH-OPERATION-TIMEOUT> # Optional. default: "5s"
+#   # - name: params
+#   #   value: <REPLACE-WITH-ADDITIONAL-PARAMETERS> # Optional. Example: "?authSource=daprStore&ssl=true"

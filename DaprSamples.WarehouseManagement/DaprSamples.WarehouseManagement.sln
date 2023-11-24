@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WarehouseManagement.Orders", "WarehouseManagement.Orders\WarehouseManagement.Orders.csproj", "{8FFE21C7-6351-4490-8ED3-FFDDB0A26643}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WarehouseManagement.Core", "WarehouseManagement.Core\WarehouseManagement.Core.csproj", "{3200E549-EEC1-48E8-A985-A14B1559CEDA}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{43918EC6-5771-4CDC-9D38-D0E5F41C33ED}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WarehouseManagement.Customers", "WarehouseManagement.Customers\WarehouseManagement.Customers.csproj", "{64EB699A-C4E2-4949-909C-6AF40001C642}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WarehouseManagement.Inventory", "WarehouseManagement.Inventory\WarehouseManagement.Inventory.csproj", "{A341D876-FAE9-4EE5-8766-A467B1A2D2F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarehouseManagement.UI", "WarehouseManagement.UI\WarehouseManagement.UI.csproj", "{330079B4-417D-4AE6-B4C8-4084E7CBD6B6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8FFE21C7-6351-4490-8ED3-FFDDB0A26643}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FFE21C7-6351-4490-8ED3-FFDDB0A26643}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FFE21C7-6351-4490-8ED3-FFDDB0A26643}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FFE21C7-6351-4490-8ED3-FFDDB0A26643}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3200E549-EEC1-48E8-A985-A14B1559CEDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3200E549-EEC1-48E8-A985-A14B1559CEDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3200E549-EEC1-48E8-A985-A14B1559CEDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3200E549-EEC1-48E8-A985-A14B1559CEDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43918EC6-5771-4CDC-9D38-D0E5F41C33ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43918EC6-5771-4CDC-9D38-D0E5F41C33ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43918EC6-5771-4CDC-9D38-D0E5F41C33ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43918EC6-5771-4CDC-9D38-D0E5F41C33ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64EB699A-C4E2-4949-909C-6AF40001C642}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64EB699A-C4E2-4949-909C-6AF40001C642}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64EB699A-C4E2-4949-909C-6AF40001C642}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64EB699A-C4E2-4949-909C-6AF40001C642}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A341D876-FAE9-4EE5-8766-A467B1A2D2F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A341D876-FAE9-4EE5-8766-A467B1A2D2F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A341D876-FAE9-4EE5-8766-A467B1A2D2F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A341D876-FAE9-4EE5-8766-A467B1A2D2F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{330079B4-417D-4AE6-B4C8-4084E7CBD6B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{330079B4-417D-4AE6-B4C8-4084E7CBD6B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{330079B4-417D-4AE6-B4C8-4084E7CBD6B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{330079B4-417D-4AE6-B4C8-4084E7CBD6B6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E46C2373-C384-4527-8EEB-32B99FA60A04}
+	EndGlobalSection
+EndGlobal

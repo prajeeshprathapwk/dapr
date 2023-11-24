@@ -1,0 +1,15 @@
+# apiVersion: dapr.io/v1alpha1
+# kind: Component
+# metadata:
+#   name: datastore
+# spec:
+#   type: state.azure.cosmosdb
+#   metadata:
+#   - name: url
+#     value: https://dapr-mongodb.documents.azure.com:443/
+#   - name: masterKey
+#     value: 8u2Yab2kmkozXEvY3dGEkcqDN6EHR91tIo7vHSX8mSiNsN50fQwbdfBvFCLjnrusoLgcfT4CRm8rACDbs7wceQ==
+#   - name: database
+#     value: Warehouse
+#   - name: collection
+#     value: Orders

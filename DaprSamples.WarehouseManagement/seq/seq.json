@@ -1,0 +1,203 @@
+{
+    "OwnerId": "user-admin",
+    "Title": "Warehouse Management",
+    "IsProtected": false,
+    "SignalExpression": null,
+    "Charts": [
+      {
+        "Id": "chart-19",
+        "Title": "External Events - Subscribed",
+        "SignalExpression": null,
+        "Queries": [
+          {
+            "Id": "chartquery-20",
+            "Measurements": [
+              {
+                "Value": "count(*)",
+                "Label": "count"
+              }
+            ],
+            "Where": "Type = 'EventSubscriber'",
+            "SignalExpression": null,
+            "GroupBy": [],
+            "DisplayStyle": {
+              "Type": "Bar",
+              "LineFillToZeroY": false,
+              "LineShowMarkers": true,
+              "BarOverlaySum": true,
+              "SuppressLegend": false,
+              "Palette": "Greens"
+            },
+            "Having": null,
+            "OrderBy": [],
+            "Limit": null
+          }
+        ],
+        "DisplayStyle": {
+          "WidthColumns": 4,
+          "HeightRows": 1
+        }
+      },
+      {
+        "Id": "chart-21",
+        "Title": "External Events - Published",
+        "SignalExpression": null,
+        "Queries": [
+          {
+            "Id": "chartquery-22",
+            "Measurements": [
+              {
+                "Value": "count(*)",
+                "Label": "count"
+              }
+            ],
+            "Where": "Type = 'EventProducer'",
+            "SignalExpression": null,
+            "GroupBy": [],
+            "DisplayStyle": {
+              "Type": "Bar",
+              "LineFillToZeroY": false,
+              "LineShowMarkers": true,
+              "BarOverlaySum": true,
+              "SuppressLegend": false,
+              "Palette": "Greens"
+            },
+            "Having": null,
+            "OrderBy": [],
+            "Limit": null
+          }
+        ],
+        "DisplayStyle": {
+          "WidthColumns": 4,
+          "HeightRows": 1
+        }
+      },
+      {
+        "Id": "chart-23",
+        "Title": "Commands",
+        "SignalExpression": null,
+        "Queries": [
+          {
+            "Id": "chartquery-24",
+            "Measurements": [
+              {
+                "Value": "count(*)",
+                "Label": "count"
+              }
+            ],
+            "Where": "Type = 'Command'",
+            "SignalExpression": null,
+            "GroupBy": [],
+            "DisplayStyle": {
+              "Type": "Bar",
+              "LineFillToZeroY": false,
+              "LineShowMarkers": true,
+              "BarOverlaySum": true,
+              "SuppressLegend": false,
+              "Palette": "Greens"
+            },
+            "Having": null,
+            "OrderBy": [],
+            "Limit": null
+          }
+        ],
+        "DisplayStyle": {
+          "WidthColumns": 4,
+          "HeightRows": 1
+        }
+      },
+      {
+        "Id": "chart-25",
+        "Title": "Commands - Details",
+        "SignalExpression": null,
+        "Queries": [
+          {
+            "Id": "chartquery-26",
+            "Measurements": [
+              {
+                "Value": "Command",
+                "Label": "Command"
+              },
+              {
+                "Value": "Payload",
+                "Label": "Payload"
+              },
+              {
+                "Value": "SourceContext",
+                "Label": "Source"
+              }
+            ],
+            "Where": "Type = 'Command'",
+            "SignalExpression": null,
+            "GroupBy": [],
+            "DisplayStyle": {
+              "Type": "Table",
+              "LineFillToZeroY": false,
+              "LineShowMarkers": true,
+              "BarOverlaySum": true,
+              "SuppressLegend": false,
+              "Palette": "Default"
+            },
+            "Having": null,
+            "OrderBy": [],
+            "Limit": null
+          }
+        ],
+        "DisplayStyle": {
+          "WidthColumns": 12,
+          "HeightRows": 1
+        }
+      },
+      {
+        "Id": "chart-28",
+        "Title": "Events",
+        "SignalExpression": null,
+        "Queries": [
+          {
+            "Id": "chartquery-29",
+            "Measurements": [
+              {
+                "Value": "Event",
+                "Label": "Event"
+              },
+              {
+                "Value": "Payload",
+                "Label": "Payload"
+              },
+              {
+                "Value": "Type",
+                "Label": "Type"
+              },
+              {
+                "Value": "SourceContext",
+                "Label": "Source"
+              }
+            ],
+            "Where": "Type = 'EventProducer' or Type = 'EventSubscriber'",
+            "SignalExpression": null,
+            "GroupBy": [],
+            "DisplayStyle": {
+              "Type": "Table",
+              "LineFillToZeroY": false,
+              "LineShowMarkers": true,
+              "BarOverlaySum": true,
+              "SuppressLegend": false,
+              "Palette": "Default"
+            },
+            "Having": null,
+            "OrderBy": [],
+            "Limit": null
+          }
+        ],
+        "DisplayStyle": {
+          "WidthColumns": 12,
+          "HeightRows": 3
+        }
+      }
+    ],
+    "Id": "dashboard-27",
+    "Links": {
+      "Self": "api/dashboards/dashboard-27?version=5",
+      "Group": "api/dashboards/resources"
+    }
+  }

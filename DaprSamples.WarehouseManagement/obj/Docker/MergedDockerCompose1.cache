@@ -1,0 +1,260 @@
+name: dockercompose13744472210713241816
+services:
+  mongo:
+    environment:
+      MONGO_INITDB_ROOT_PASSWORD: mongorootpwd
+      MONGO_INITDB_ROOT_USERNAME: root
+    image: mongo
+    networks:
+      default: null
+    restart: always
+  mongo-express:
+    environment:
+      ME_CONFIG_MONGODB_ADMINPASSWORD: mongorootpwd
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_URL: mongodb://root:mongorootpwd@mongo:27017/
+    image: mongo-express
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 8081
+      published: "8081"
+      protocol: tcp
+    restart: always
+  redis:
+    hostname: redisstate
+    image: redis:alpine
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 6379
+      published: "6379"
+      protocol: tcp
+  redisCommander:
+    environment:
+      REDIS_HOSTS: local:redisstate:6379
+    image: rediscommander/redis-commander:latest
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 8081
+      published: "8082"
+      protocol: tcp
+    restart: always
+  seq:
+    deploy:
+      resources:
+        limits:
+          memory: "15032385536"
+        reservations:
+          memory: "15032385536"
+    environment:
+      ACCEPT_EULA: "Y"
+    image: datalust/seq:latest
+    labels:
+      traefik.backend: seq
+      traefik.docker.network: web
+      traefik.port: "80"
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      published: "54001"
+      protocol: tcp
+  warehousemanagement-customers:
+    build:
+      context: C:\Prajeesh\Projects\DaprSamples.WarehouseManagement
+      dockerfile: WarehouseManagement.Customers/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: WarehouseManagement.Customers
+      target: base
+    container_name: WarehouseManagement.Customers
+    entrypoint:
+    - tail
+    - -f
+    - /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      DOTNET_USE_POLLING_FILE_WATCHER: "1"
+      NUGET_FALLBACK_PACKAGES: ""
+    image: warehousemanagementcustomers:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages  "/app/bin/Debug/net7.0/WarehouseManagement.Customers.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      published: "5001"
+      protocol: tcp
+    tty: true
+    volumes:
+    - type: bind
+      source: C:\Prajeesh\Projects\DaprSamples.WarehouseManagement\WarehouseManagement.Customers
+      target: /app
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Prajeesh\Projects\DaprSamples.WarehouseManagement
+      target: /src
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\Prajeesh.Prathap\vsdbg\vs2017u5
+      target: /remote_debugger
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\Prajeesh.Prathap\.nuget\packages\
+      target: /root/.nuget/packages
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\Prajeesh.Prathap\AppData\Roaming/ASP.NET/Https
+      target: /root/.aspnet/https
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\Prajeesh.Prathap\AppData\Roaming/Microsoft/UserSecrets
+      target: /root/.microsoft/usersecrets
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\TokenService.Proxy\linux-x64\net7.0
+      target: /TokenService.Proxy
+      read_only: true
+      bind:
+        create_host_path: true
+  warehousemanagement-customers-sidecar:
+    command:
+    - ./daprd
+    - -app-id
+    - warehousemanagement-customers
+    - -app-port
+    - "80"
+    - -components-path
+    - /components
+    - -log-level
+    - debug
+    depends_on:
+      warehousemanagement-customers:
+        condition: service_started
+    image: daprio/daprd:latest
+    network_mode: service:warehousemanagement-customers
+    volumes:
+    - type: bind
+      source: C:\Prajeesh\Projects\DaprSamples.WarehouseManagement\dapr\customer
+      target: /components
+      bind:
+        create_host_path: true
+  warehousemanagement-orders:
+    build:
+      context: C:\Prajeesh\Projects\DaprSamples.WarehouseManagement
+      dockerfile: WarehouseManagement.Orders/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: WarehouseManagement.Orders
+      target: base
+    container_name: WarehouseManagement.Orders
+    entrypoint:
+    - tail
+    - -f
+    - /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      DOTNET_USE_POLLING_FILE_WATCHER: "1"
+      NUGET_FALLBACK_PACKAGES: ""
+    image: warehousemanagementorders:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages  "/app/bin/Debug/net7.0/WarehouseManagement.Orders.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      published: "5003"
+      protocol: tcp
+    tty: true
+    volumes:
+    - type: bind
+      source: C:\Prajeesh\Projects\DaprSamples.WarehouseManagement\WarehouseManagement.Orders
+      target: /app
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Prajeesh\Projects\DaprSamples.WarehouseManagement
+      target: /src
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\Prajeesh.Prathap\vsdbg\vs2017u5
+      target: /remote_debugger
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\Prajeesh.Prathap\.nuget\packages\
+      target: /root/.nuget/packages
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\Prajeesh.Prathap\AppData\Roaming/ASP.NET/Https
+      target: /root/.aspnet/https
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\Prajeesh.Prathap\AppData\Roaming/Microsoft/UserSecrets
+      target: /root/.microsoft/usersecrets
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Sdks\Microsoft.Docker.Sdk\tools\TokenService.Proxy\linux-x64\net7.0
+      target: /TokenService.Proxy
+      read_only: true
+      bind:
+        create_host_path: true
+  warehousemanagement-orders-sidecar:
+    command:
+    - ./daprd
+    - -app-id
+    - warehousemanagement-orders
+    - -app-port
+    - "80"
+    - -components-path
+    - /components
+    - -log-level
+    - debug
+    depends_on:
+      warehousemanagement-orders:
+        condition: service_started
+    image: daprio/daprd:latest
+    network_mode: service:warehousemanagement-orders
+    volumes:
+    - type: bind
+      source: C:\Prajeesh\Projects\DaprSamples.WarehouseManagement\dapr\order
+      target: /components
+      bind:
+        create_host_path: true
+networks:
+  default:
+    name: dockercompose13744472210713241816_default

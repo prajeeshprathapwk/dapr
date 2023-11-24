@@ -1,0 +1,25 @@
+apiVersion: dapr.io/v1alpha1
+kind: Resiliency
+metadata:
+  name: stateStoreResiliency
+
+spec:
+  policies:
+    retries:
+      stateStoreRetry:
+        policy: constant
+        maxInterval: 5s
+        maxRetries: 10 
+
+    circuitBreakers:
+      stateStoreCircuitBreaker:
+        maxRequests: 1
+        timeout: 5s 
+        trip: consecutiveFailures >= 5
+
+  targets:
+    components:
+      datastore:
+        outbound: 
+          retry: stateStoreRetry
+          circuitBreaker: stateStoreCircuitBreaker

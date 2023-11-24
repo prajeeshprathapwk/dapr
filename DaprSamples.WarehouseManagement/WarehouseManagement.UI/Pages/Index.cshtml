@@ -1,0 +1,36 @@
+﻿@page
+@using WarehouseManagement.UI.Models
+@model IndexModel
+@{
+    ViewData["Title"] = "Orders";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Placed Orders</h1>
+
+    <table>
+        @foreach (var order in (IEnumerable<ProductOrder>)ViewData["OrderData"]!)
+        {
+        <tr>
+            <td>
+                    @order.OrderId;
+            <td>
+            <td>
+                    @order.Product;
+                </td>
+                <td>
+                            @order.Product;
+                </td>
+                <td>
+                            @order.State;
+                </td>
+                <td>
+                            @order.Quantity;
+                </td>
+                <td>
+                            @order.Price;
+                </td>
+        </tr>
+         }
+    </table>
+</div>
